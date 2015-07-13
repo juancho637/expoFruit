@@ -1,0 +1,179 @@
+<div ng-controller="iniController">
+            <div ng-controller="nav" class="nav">
+                Aqui tiene que ir el menú XD
+                <div class="Minicio" ng-if="mIni == '0'">
+                    <button ng-click="opendDialog2('regis')" class="btn btn--m btn--blue btn--raised" lx-ripple>{{valor}}</button>
+                    <button class="btn btn--m btn--green btn--raised" ng-click="opendDialog('test')" lx-ripple>Registrate</button><!-- inicializa el evento click para mostrar el formulario de registro -->
+                </div>
+                <div class="Minicio" ng-if="mIni == '1'">
+                    <ul>
+                        <li>
+                            <a id="btnHerra" class="btn btn--m btn--blue btn--raised" lx-ripple href="#/" ng-click="urlChange('')">{{valor}}</a>
+                            <ul>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4'" lx-ripple href="#/productos" ng-click="urlChange('productos')">Productos</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4'" lx-ripple href="#/perfil" ng-click="urlChange('perfil')">Editar perfil</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4' && cr == '2'" lx-ripple href="#/correo" ng-click="urlChange('correo')">enviar correo</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/clientes" ng-click="urlChange('clientes')">Clientes</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/empleados" ng-click="urlChange('empleados')">Empleados</a></li>
+                                <li><a class="btn btn--s btn--red btn--raised" lx-ripple href="#/" ng-click="closeSesion()">cerrar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- pop up de registro -->
+                <lx-dialog class="dialog dialog--l" id="test" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
+                    <div class="dialog__header">
+                        <div class="toolbar bgc-light-blue-500 pl++">
+                            <span class="toolbar__label tc-white fs-title">Registrate</span>
+                            <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
+                        </div>
+                    </div>
+                    <div class="dialog__content">
+                            <div id="reg">
+                                <div flex-container="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <lx-text-field label="Nombre">
+                                            <input type="text" ng-model="nombre">
+                                        </lx-text-field>
+                                    </div>
+
+                                    <div flex-item>
+                                        <lx-text-field label="Apellido">
+                                            <input type="text" ng-model="apellido">
+                                        </lx-text-field>
+                                    </div>
+                                    
+                                    <div flex-item>
+                                        <lx-text-field label="Email" valid="emailValidation(firstEmail)" error="!emailValidation(firstEmail)">
+                                            <input type="email" ng-model="firstEmail">
+                                        </lx-text-field>
+                                    </div>
+                                </div>
+                                <button ng-click="EnviarRegis()">Enviar Registro</button>
+                            </div>
+                    </div>
+                </lx-dialog>
+                <!-- fin de pop up de registro --> 
+                
+                <!-- pop up de login --> 
+                <lx-dialog class="dialog dialog--l" id="regis" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
+                        <div class="dialog__header">
+                            <div class="toolbar bgc-light-blue-500 pl++">
+                                <span class="toolbar__label tc-white fs-title">Iniciar Sesión</span>
+                                <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
+                            </div>
+                        </div>
+                        <div class="dialog__content">
+                                <div id="reg">
+                                    <div flex-item class="inpu">
+                                        <lx-text-field label="Usuario">
+                                            <input type="text" id="user" ng-model="user">
+                                        </lx-text-field>
+                                    </div>
+                                    <div flex-item class="inpu">
+                                        <lx-text-field label="Contraseña">
+                                            <input type="password" id="password" ng-model="pass">
+                                        </lx-text-field>
+                                    </div>
+                                    <br>
+                                    <div flex-item class="inpu">
+                                        <button id="btnIniciar" class="btn btn--m btn--green btn--raised" ng-click="iniciar()">Iniciar</button>
+                                    </div>
+                                </div>
+                        </div>
+                </lx-dialog>
+                <!-- fin de pop up de login --> 
+            </div>
+            <div ng-controller="productos" ng-if="cambio == ''">
+                pagina de inicio
+            </div>
+            <div ng-controller="perfil" ng-if="cambio == 'perfil'">
+                <div id="reg">
+                    <h1>Edita tu Perfil</h1>
+                    <br>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Nombre">
+                                <input type="text" ng-model="nombre" value="{{nombre}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Apellido">
+                                <input type="text" ng-model="apellido" value="{{apellido}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Nombre de Usuario" disabled="true">
+                                <input type="text" ng-disabled="true" ng-model="nickName" value="{{nickName}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Contraseña" disabled="true">
+                                <input type="password" ng-disabled="true" ng-model="contrasena" value="{{contrasena}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <div flex-item>
+                                <button class="btn btn--m btn--green btn--raised btnPass" ng-click="cambiarPassword()">Cambiar Contraseña</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Telefono">
+                                <input type="text" ng-model="tel" value="{{tel}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Celular">
+                                <input type="text" ng-model="cell" value="{{cell}}">
+                            </lx-text-field>
+                        </div> 
+                        <div flex-item>
+                            <lx-text-field label="Email" valid="emailValidation(mail)" error="!emailValidation(mail)">
+                                <input type="email" ng-model="mail" value="{{mail}}">
+                            </lx-text-field>
+                        </div>
+                    </div>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Pais">
+                                <input type="text" ng-model="pais">
+                            </lx-text-field>
+                        </div> 
+                        <div flex-item>
+                            <lx-text-field label="Ciudad">
+                                <input type="email" ng-model="ciudad">
+                            </lx-text-field>
+                        </div>
+                    </div>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Dirección">
+                                <input type="text" ng-model="direccion" value="{{direccion}}">
+                            </lx-text-field>
+                        </div>
+                    </div>                    
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item class="btnActualizar">
+                            <button class="btn btn--m btn--green btn--raised btnPass" ng-click="actualizarDatos()">Actualizar Datos</button>
+                        </div>
+                        <div class="btnCerrarcuenta">
+                            <button class="btn btn--m btn--red btn--raised btnPass" ng-click="cerrarCuenta()">Cerrar Cuenta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-controller="productos" ng-if="cambio == 'productos'">
+                productos
+            </div>
+            <div ng-controller="clientes" ng-if="cambio == 'clientes'">
+                clientes
+            </div>
+            <div ng-controller="empleados" ng-if="cambio == 'empleados'">
+                empleados
+            </div>
+            <div ng-controller="correo" ng-if="cambio == 'correo'">
+                correos
+            </div>
+        </div>

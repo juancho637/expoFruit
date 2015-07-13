@@ -1,0 +1,117 @@
+/* TODO: Comentario en css */
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background: #fff;
+}
+.loaderQ { 
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,1);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 1100000000;
+}
+.nav{
+    background: rgba(48,218,154,0.6);
+    height: 50px;
+    width: 100%;
+    position: absolute;
+}
+#reg{
+    z-index: 1;
+    margin: 0 50px 20px 50px;
+}
+#btnHerra{
+    width: 120px;
+}
+.Minicio{
+    float: right;
+    margin: 5px 10px 0 0;
+    z-index: 1;
+}
+.Minicio > button{
+    float: left;
+    margin-right: 10px; 
+}
+.Minicio ul, ol{
+    list-style: none;
+    z-index: 10;
+    float: right;
+}
+.Minicio ul li ul{
+    display: none;
+    position: absolute;
+}
+.Minicio ul li ul li{
+    margin-top: 5px;
+}
+.Minicio ul li ul li a{
+    width: 120px;
+}
+.Minicio ul li:hover > ul{
+    display: block;
+}
+.inpu{
+    text-align: center;
+}
+.btnPass{
+    margin: 20px 0 0 15px;
+}
+.btnActualizar{
+    text-align: right;
+}
+.btnCerrarcuenta{
+    width: 42%;
+    text-align: right;
+}
+.sel{
+    margin: 30px 0 0 40px;
+}
+.sel3{
+    margin: 25px 0 0 40px;
+}
+.sel2{
+    margin: 25px 0 0 0px;
+}
+.btnRegis{
+    margin-top: 15px;
+}
+.errores{
+    position: absolute;
+    background: red;
+    color: white;
+    padding: 5px;
+    z-index: 10;
+    margin-left: 100px;
+    margin-top: 3px;
+}
+.triangulo_sup {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid red;
+    margin-top: -15px;
+    position: absolute;
+}
+.inpFile{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.inFile{
+    width: 400px;
+}
+.imgg{
+    display: none;
+}
+.imgInput{
+    height: 200px;
+}
+/*.card{
+    margin-top: 20px;
+}*/

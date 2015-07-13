@@ -1,0 +1,37 @@
+----------------------------------INICIO CLASS_MODULO_USUARIO---------------------
+INSERTAR NUEVO USUARIO-> 
+INSERT INTO `tb_usuarios`(`id_usuario`, `nickname_usuario`, `pass_usuario`, `nombre_usuario`, `apellido_usuario`, `role_usuarios`, `email_usuarios`, `ciudad_usuario`, `pais_usuario`, `disponible_usuario`) VALUES (NULL,'{}','{}','{}','{}','{}','{}','{}','{}','1')
+-----
+SELECCIONAR ROLES USUARIO->
+SELECT DISTINCT tb_roles.id_role, tb_roles.nombre_role as 'TIPO DE ROLES' from tb_roles
+-----
+SELECCIONAR CIUDADES REFENCIA CountryID->
+select distinct tb_ciudad.CityID as 'codigo ciudad',tb_ciudad.City as 'nombre ciudad' from tb_ciudad where tb_ciudad.`CountryID`={ }
+
+SELCCIONAR PAISES REFERENCIADAS POR REGIONES->1.EUROPE 2.North America 
+SELECT distinct tb_paises.`CountryId` as 'codigo pais', tb_paises.`Country` as 'nombre pais' FROM `tb_paises` WHERE tb_paises.`MapReference`='{}'
+
+ACTUALIZAR LA INFORMACION DE CADA USUARIO REFERENCIA id_usuario(Verificar pass_usuario y id_usuario antes de este query)->
+UPDATE `tb_usuarios` SET `pass_usuario`='{}',`nombre_usuario`='{}',`apellido_usuario`='{}',`email_usuarios`='{}',`ciudad_usuario`='{}',`pais_usuario`='{}' WHERE `id_usuario`='{}'
+
+BORRAR USUARIO REFERENCIA id_usuario y password->
+UPDATE `tb_usuarios` set `disponible_usuario`='0' WHERE tb_usuarios.`id_usuario`='{ }' and `pass_usuario`='{ }'
+
+BORRAR USUARIO COMUN REFERENCIA id_usuarios_comun y nickname_usuario_comun ->
+UPDATE `tb_usuarios_comun` SET `usuario_comun_activo`='0' WHERE `id_usuarios_comun`='' and `nickname_usuario_comun`=''
+
+BUSCAR_DATOS_USU->
+SELECT `nickname_usuario_comun`,`nombre_usuario_comun`,`apellido_usuario_comun`,`tel1_usuario_comun`,`ciudad_usuario_comun`,`email_usuario_comun`,`fecha_registro`,`tb_paises`.`Country`,`tb_ciudad`.`City` FROM `tb_usuarios_comun` inner join `tb_paises` on `tb_usuarios_comun`.`pais_usuario_comun`=`tb_paises`.`CountryID` inner join `tb_ciudad` on `tb_ciudad`.`CountryID`=`tb_paises`.`CountryId` WHERE `id_usuarios_comun`='1' || `nickname_usuario_comun`='' 
+----------------------------------FIN CLASS_MODULO_USUARIO--------------------------
+
+
+----------------------------------INICIO CLASS_FACTURACION--------------------------
+
+
+
+
+
+
+---------------------------------FIN CLASS_MODULO_FACTURACION-----------------------
+
+

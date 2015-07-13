@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!-- TODO: comentario en html asd -->
+<html ng-app="expoFruit">
+    <head>
+        <title>Expo Fruit</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/lumx.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700"><!---->
+	<link rel="stylesheet" type="text/css" href="//cdn.materialdesignicons.com/1.1.34/css/materialdesignicons.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/velocity.min.js"></script>
+        <script src="js/moment-with-locales.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/lumx.min.js"></script>
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+        <table id="loaderQ" class="loaderQ">
+            <tr>
+                <td align="center">
+                    <img src="imagenes/loader3.GIF" />
+                </td>
+            </tr>
+        </table>
+        <div ng-controller="iniController">
+            <div ng-controller="nav" class="nav">
+                Aqui tiene que ir el menú XD
+                <div class="Minicio" ng-if="mIni == '0'">
+                    <button ng-click="opendDialog2('regis')" class="btn btn--m btn--blue btn--flat" lx-ripple><i class="mdi mdi-account"></i> {{valor}}</button>
+                    <button class="btn btn--m btn--green btn--flat" ng-click="opendDialog('test')" lx-ripple><i class="mdi mdi-account-plus"></i> Registrate</button><!-- inicializa el evento click para mostrar el formulario de registro -->
+                </div>
+                <div class="Minicio" ng-if="mIni == '1'">
+                    <button ng-if="rl == '4'" class="btn btn--l btn--blue tc-black btn--icon" lx-ripple="black"><i class="mdi mdi-cart"></i></button>
+                    <ul>
+                        <li>
+                            <a id="btnHerra" class="btn btn--m btn--blue btn--raised" lx-ripple href="#/" ng-click="urlChange('')">{{valor}}</a>
+                            <ul>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4'" lx-ripple href="#/productos" ng-click="urlChange('productos')">Productos</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4'" lx-ripple href="#/perfil" ng-click="urlChange('perfil')">Editar perfil</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/proctosAdmin" ng-click="urlChange('proctosAdmin')">Productos</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4' && cr == '2'" lx-ripple href="#/correo" ng-click="urlChange('correo')">enviar correo</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/clientes" ng-click="urlChange('clientes')">Clientes</a></li>
+                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/empleados" ng-click="urlChange('empleados')">Empleados</a></li>
+                                <li><a class="btn btn--s btn--red btn--raised" lx-ripple href="#/" ng-click="closeSesion()">cerrar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- pop up de registro -->
+                <lx-dialog class="dialog dialog--l" id="test" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
+                    <div class="dialog__header">
+                        <div class="toolbar bgc-light-blue-500 pl++">
+                            <span class="toolbar__label tc-white fs-title">Registrate</span>
+                            <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
+                        </div>
+                    </div>
+                    <div class="dialog__content">
+                        <form>
+                            <div id="reg" style="max-height: 490px;" lx-scrollbar>
+                                <div flex-container="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <lx-text-field label="Usuario">
+                                            <input type="text" ng-model="nickName" required>
+                                        </lx-text-field>
+                                    </div>
+                                    <div flex-item>
+                                        <lx-text-field label="Contraseña">
+                                            <input type="password" ng-model="contrasena" required>
+                                        </lx-text-field>
+                                    </div>
+                                    <div flex-item>
+                                        <lx-text-field label="Confirme Contraseña">
+                                            <input type="password" ng-model="contrasena2" required>
+                                        </lx-text-field>
+                                    </div>
+                                </div>
+                                <div flex-container="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <lx-text-field label="Nombre">
+                                            <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32' ng-model="nombre" required>
+                                        </lx-text-field>
+                                    </div>
+                                    <div flex-item>
+                                        <lx-text-field label="Apellido">
+                                            <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32' ng-model="apellido" required>
+                                        </lx-text-field>
+                                    </div>
+                                </div>
+                                <div flex-conteiner="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <lx-text-field label="Email" valid="emailValidation(mail)" error="!emailValidation(mail)" >
+                                            <input type="email" ng-model="mail" required>
+                                        </lx-text-field>
+                                    </div>
+                                </div>
+                                <div flex-container="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <lx-text-field label="Telefono">
+                                            <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="telefono" required>
+                                        </lx-text-field>
+                                    </div>
+                                    <div flex-item>
+                                        <lx-text-field label="Celular">
+                                            <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="cell" required>
+                                        </lx-text-field>
+                                    </div>
+                                </div>
+                                <div flex-container="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <select class="sel2" id="select1" ng-options="paiss.Country for paiss in pais track by paiss.CountryId" ng-change="selecP(pais.Country)" ng-model="pais.Country" required>
+                                            <option value="" selected="selected">Seleccionar País</option>
+                                        </select>
+                                    </div>
+                                    <div flex-item>
+                                        <select class="sel3" id="select2" ng-options="ciudadd.Region for ciudadd in ciudadd track by ciudadd.RegionId" ng-model="ciudadd.City" required>
+                                            <option value="" selected="selected">Seleccionar Región</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div flex-container="row" flex-gutter="24">
+                                    <div flex-item>
+                                        <lx-text-field label="Ciudad">
+                                            <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' ng-model="ciudad" required>
+                                        </lx-text-field>
+                                    </div>
+                                    <div flex-item>
+                                        <lx-text-field label="Direccion">
+                                            <input type="text" ng-model="direccion" required>
+                                        </lx-text-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div flex-item class="inpu" style="margin-bottom: 10px;">
+                                <button class="btn btn--m btn--green btn--raised btnRegis" ng-click="EnviarRegis()">Enviar Registro</button>
+                            </div>
+                        </form>
+                    </div>
+                </lx-dialog>
+                <!-- fin de pop up de registro --> 
+                
+                <!-- pop up de login --> 
+                <lx-dialog class="dialog dialog--l" id="regis" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
+                        <div class="dialog__header">
+                            <div class="toolbar bgc-light-blue-500 pl++">
+                                <span class="toolbar__label tc-white fs-title">Iniciar Sesión</span>
+                                <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
+                            </div>
+                        </div>
+                        <div class="dialog__content">
+                                <div id="reg">
+                                    <form >
+                                        <div flex-item class="inpu">
+                                            <lx-text-field label="Usuario">
+                                                <input type="text" id="user" ng-model="user" required>
+                                                
+                                            </lx-text-field>
+                                        </div>
+                                        <div flex-item class="inpu">
+                                            <lx-text-field label="Contraseña">
+                                                <input type="password" id="password" ng-model="pass" required>
+                                            </lx-text-field>
+                                        </div>
+                                        <br>
+                                        <div flex-item class="inpu">
+                                            <button class="btn btn--m btn--green btn--raised" ng-click="iniciar()">Iniciar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                </lx-dialog>
+                <!-- fin de pop up de login --> 
+            </div>
+            <div ng-controller="inicio" ng-if="cambio == ''">
+                <style>
+                    .nav{
+                        position: relative;
+                    }
+                </style>
+                pagina del index
+            </div>
+            <div ng-controller="perfil" ng-if="cambio == 'perfil'">
+                <style>
+                    .nav{
+                        position: relative;
+                    }
+                </style>
+                <div id="reg">
+                    <h1>Edita tu Perfil</h1>
+                    <br>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Nombre">
+                                <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32' ng-model="nombre" value="{{nombre}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Apellido">
+                                <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32' ng-model="apellido" value="{{apellido}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Nombre de Usuario" disabled="true">
+                                <input type="text" ng-disabled="true" ng-model="nickName" value="{{nickName}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Contraseña" disabled="true">
+                                <input type="password" ng-disabled="true" ng-model="contrasena" value="{{contrasena}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <div flex-item>
+                                <button class="btn btn--m btn--green btn--raised btnPass" ng-click="cambiarPassword()">Cambiar Contraseña</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Telefono">
+                                <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="tel" value="{{tel}}">
+                            </lx-text-field>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Celular">
+                                <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="cell" value="{{cell}}">
+                            </lx-text-field>
+                        </div> 
+                        <div flex-item>
+                            <lx-text-field label="Email" valid="emailValidation(mail)" error="!emailValidation(mail)">
+                                <input type="email" ng-model="mail" value="{{mail}}">
+                            </lx-text-field>
+                        </div>
+                    </div>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <select class="sel" ng-options="paiss.Country for paiss in paiss.paises track by paiss.CountryId" ng-change="selecP(paiss[0].selecP.CountryId)" ng-model="paiss[0].selecP"></select>
+                        </div>
+                        <div flex-item>
+                            <select class="sel" ng-options="ciudadd.Region for ciudadd in ciudadd.regiones track by ciudadd.RegionId" ng-model="ciudadd[0].selecR"></select>
+                        </div>
+                        <div flex-item>
+                            <lx-text-field label="Ciudad">
+                                <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32' ng-model="ciudad" value="{{ciudad}}">
+                            </lx-text-field>
+                        </div> 
+                    </div>
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Dirección">
+                                <input type="text" ng-model="direccion" value="{{direccion}}">
+                            </lx-text-field>
+                        </div>
+                    </div>                    
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item class="btnActualizar">
+                            <button class="btn btn--m btn--green btn--raised btnPass" ng-click="actualizarDatos()">Actualizar Datos</button>
+                        </div>
+                        <div class="btnCerrarcuenta">
+                            <button class="btn btn--m btn--red btn--raised btnPass" ng-click="cerrarCuenta()">Cerrar Cuenta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-controller="productos" ng-if="cambio == 'productos'">
+                productos
+            </div>
+            <div ng-controller="clientes" ng-if="cambio == 'clientes'">
+                <style>
+                    .nav{
+                        position: relative;
+                    }
+                </style>
+                <div class="card">
+                    <lx-tabs>
+                        <lx-tab heading="Clientes">
+                            <br>
+                                <div class="data-table-container">
+                                    <table class="data-table">
+                                        <thead style="border-bottom: 3px solid gray;">
+                                            <tr class="data-table__selectable-row">
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>E-mail</th>
+                                                <th>Activo</th>
+                                                <th>Preferencial</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="cliente in datosClientes">
+                                                <td style="width: 250px;">{{cliente.nombre_usuario_comun}}</td>
+                                                <td style="width: 250px;">{{cliente.apellido_usuario_comun}}</td>
+                                                <td style="width: 300px;">{{cliente.email_usuario_comun}}</td>
+                                                <td style="width: 150px;">{{cliente.usuario_comun_activo}}</td>
+                                                <td style="width: 100px;">{{cliente.contacto_usuario_comun}}</td>
+                                                <td style="width: 120px;">
+                                                    <button class="btn btn--xs btn--green btn--raised btnPass" ng-click="opendDialog('clientesAdmin',cliente)" lx-ripple>Ver más</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </lx-tab>
+                    </lx-tabs>
+                </div>
+                <!---->
+                <lx-dialog class="dialog dialog--l" id="clientesAdmin" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
+                    <div class="dialog__header">
+                        <div class="toolbar bgc-light-blue-500 pl++">
+                            <span class="toolbar__label tc-white fs-title">{{especifco.nombre_usuario_comun}} {{especifco.apellido_usuario_comun}}</span>
+                            <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
+                        </div>
+                    </div>
+                    <div class="dialog__content">
+                        <div id="reg">
+                            <p>
+                                {{especifco.email_usuario_comun}}
+                            </p>
+                            <p>
+                                {{especifco.tel1_usuario_comun}}
+                            </p>
+                            <p>
+                                {{especifco.tel2_usuario_comun}}
+                            </p>
+                        </div>
+                    </div>
+                </lx-dialog>
+                <!---->
+            </div>
+            <div ng-controller="empleados" ng-if="cambio == 'empleados'">
+                <style>
+                    .nav{
+                        position: relative;
+                    }
+                </style>
+                <div class="card">
+                    <lx-tabs>
+                        <lx-tab heading="Empleados">
+                            <div class="p+">
+                                <button class="btn btn--xl btn--red btn--icon" lx-ripple><i class="mdi mdi-delete"></i></button>
+                            </div>
+                        </lx-tab>
+                        <lx-tab heading="Agregar Empleados">
+                            <div class="p+">
+                                <p class="p+">Agregar Empleados</p>
+                            </div>
+                        </lx-tab>
+                    </lx-tabs>
+                </div>
+            </div>
+            <div ng-controller="correo" ng-if="cambio == 'correo'">
+                correos
+            </div>
+            <div ng-controller="proctosAdmin" ng-if="cambio == 'proctosAdmin'">
+                <style>
+                    .nav{
+                        position: relative;
+                    }
+                </style>
+                <div class="card">
+                    <lx-tabs>
+                        <lx-tab heading="Productos">
+                                <!---->
+                                <div class="data-table-container">
+                                    <table class="data-table">
+                                        <thead style="border-bottom: 3px solid gray;">
+                                            <tr class="data-table__selectable-row">
+                                                <th>Nombre</th>
+                                                <th>Valor (USD)</th>
+                                                <th>Cantidad</th>
+                                                <th>Descripcion</th>
+                                                <th>Disponible</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="datos in datosProductos">
+                                                <td style="width: 250px;">{{datos.nombre_producto}}</td>
+                                                <td style="width: 100px;">{{datos.valor_producto}}</td>
+                                                <td style="width: 110px;">{{datos.cantidad_producto}}</td>
+                                                <td><p style="width: 550px; max-height: 50px;" lx-scrollbar>{{datos.descripcion_producto}}</p></td>
+                                                <td style="width: 80px;">si</td>
+                                                <td style="width: 110px;">
+                                                    <button class="btn btn--m btn--red btn--icon" ng-click="eliminarProducto(datos.id_producto)" lx-ripple><i class="mdi mdi-delete"></i></button>
+                                                    <button class="btn btn--m btn--blue btn--icon" ng-click="editarProducto(datos.id_producto)" lx-ripple><i class="mdi mdi-pencil"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!---->
+                        </lx-tab>
+                        <lx-tab heading="Agregar Productos">
+                            <div class="p+">
+                                <form id="forProducto" action="php/agregar.php" method="POST" enctype="multipart/form-data">
+                                    <div flex-container="row" flex-gutter="24">
+                                        <div flex-item>
+                                            <lx-text-field label="Nombre del Producto">
+                                                <input type="text" ng-model="nombreProducto" name="nombreProducto" value="" required>
+                                            </lx-text-field>
+                                        </div>
+                                        <div flex-item>
+                                            <lx-select ng-model="selects.selectedPerson" placeholder="Categoria" choices="people" floating-label>
+                                                <lx-select-selected>
+                                                    {{ $selected.name + ' ' + $selected.age }}
+                                                </lx-select-selected>
+
+                                                <lx-select-choices>
+                                                    {{ $choice.email }}
+                                                </lx-select-choices>
+                                            </lx-select>
+                                        </div> 
+                                    </div>
+                                    <div class="inpFile" flex-container="row">
+                                        <div flex-item>
+                                            <input type="file" class="inFile" value="file1" name="file1" id="file1" onchange="angular.element(this).scope().filee1()" required>
+                                        </div>
+                                        <div flex-item>
+                                            <input type="file" class="inFile" value="file2" name="file2" id="file2" onchange="angular.element(this).scope().filee2()" required>
+                                        </div>
+                                        <div flex-item>
+                                            <input type="file" class="inFile" value="file3" name="file3" id="file3" onchange="angular.element(this).scope().filee3()">
+                                        </div>
+                                    </div>
+                                    <div flex-container="row" class="imgInput">
+                                        <div flex-item class="inpFile">
+                                            <img class="imgg" height="200" id="img1">
+                                        </div>
+                                        <div flex-item class="inpFile">
+                                            <img class="imgg" height="200" id="img2">
+                                        </div>
+                                        <div flex-item class="inpFile">
+                                            <img class="imgg" height="200" id="img3">
+                                        </div>
+                                    </div>
+                                    <div flex-container="row">
+                                        <div flex-item>
+                                            <lx-text-field label="Description">
+                                                <textarea ng-model="descripcionProducto" name="descropcion" required></textarea>
+                                            </lx-text-field>
+                                        </div>
+                                    </div>
+                                    <div flex-container="row" flex-gutter="24">
+                                        <div flex-item>
+                                            <lx-text-field label="Valor">
+                                                <input type="text" ng-model="valorProducto" name="valor" value="" required>
+                                            </lx-text-field>
+                                        </div>
+                                        <div flex-item>
+                                            <lx-text-field label="Cantidad">
+                                                <input type="text" ng-model="cantidadProducto" name="cantidad" value="" required>
+                                            </lx-text-field>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div flex-item class="inpu">
+                                        <button ng-click="cl()" class="btn btn--m btn--green btn--raised">Agregar Producto</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </lx-tab>
+                    </lx-tabs>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

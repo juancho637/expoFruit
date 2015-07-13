@@ -1,0 +1,5 @@
+LO NUEVO:
+
+CREACION DE TABLAS tb_paises, tb_ciudades, tb_regiones, llenados de esas tablas, tb_imagenes
+LLENADO DE TABLAS HIJOS.
+LLENADO DE EJEMPLO DE TABLAS PRINCIPALES.
