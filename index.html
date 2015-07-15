@@ -16,6 +16,7 @@
         <script src="js/angular.min.js"></script>
         <script src="js/lumx.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
     </head>
     <body>
         <div id="loaderQ" class="loaderQ">
@@ -182,19 +183,17 @@
                 </lx-dialog>
                 <!-- fin de pop up de login --> 
             </div>
-            <div ng-controller="inicio" ng-if="cambio == ''">
+            <div class="inicio" ng-controller="inicio" ng-if="cambio == ''">
                  <section id="principal">
-                         <!--  <h1>Expo Fruit</h1> -->
-                          <div id="content">
+                        <!--   <h1>Expo Fruit</h1> -->
+                <div id="content">
                   <ul class="bxslider">
-                    <li><img src="imagenes/imgPrincipal.jpg" title="Caption 1" /></li>
-                    <li><img src="imagenes/imgPrincipal3.jpg" title="Caption 2" /></li>
+                    <li><img src="imagenes/imgInicio/imgPrincipal.jpg" title="Caption 1" /></li>
+                    <li><img src="imagenes/imgInicio/imgPrincipal3.jpg" title="Caption 2" /></li>
                    <!--  <li><img src="imagenes/curuba.jpg" title="Caption 3" /></li>
                     <li><img src="imagenes/uchuva.jpg" title="Caption 4" /></li> -->
                   </ul>
                 </div>
-                       
-               
                 </section>
 
                    <section id="productos">
@@ -211,9 +210,9 @@
                             <img src="imagenes/comprarOp1.png">
                             <p>Da click en comprar</p>
                         </div>
-                         <div id="comprarOp1"><img src="imagenes/comprarOp2.png"></div>
-                         <div id="comprarOp1"><img src="imagenes/comprarOp3.png"></div>
-                         <div id="comprarOp1"><img src="imagenes/comprarOp4.png"></div>
+                         <div id="comprarOp1"><img src="imagenes/imgInicio/comprarOp2.png"></div>
+                         <div id="comprarOp1"><img src="imagenes/imgInicio/comprarOp3.png"></div>
+                         <div id="comprarOp1"><img src="imagenes/imgInicio/comprarOp4.png"></div>
                          <!-- <div id="comprarOp1"></div> -->
 
                    </section>
@@ -248,6 +247,7 @@
                             </div>
                    </section>
             </div>
+
             <div ng-controller="perfil" ng-if="cambio == 'perfil'">
                 <style>
                     .nav{

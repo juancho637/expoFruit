@@ -50,6 +50,11 @@ expoF.controller("iniController", function ($scope) {
 });
 
 expoF.controller("inicio", function () {
+     $('.bxslider').bxSlider({
+              auto: true,
+              // autoControls: true
+              controls: null
+             });
     serv.loader(0);
 });
 
