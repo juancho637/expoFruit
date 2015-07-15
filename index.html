@@ -32,7 +32,7 @@
                 <nav>
                     <ul>
                         <li><a lx-ripple href="#/" ng-click="urlChange('')">Inicio</a></li>
-                        <li><a  lx-ripple href="#/VerProductos" ng-click="urlChange('VerProductos')">Productos</a></li>  
+                        <li><a>Productos</a></li>  
                         <li><a lx-ripple href="#/exportaciones" ng-click="urlChange('exportaciones')">Exportaciones</a></li>
                         <li><a lx-ripple href="#/calendario" ng-click="urlChange('calendario')">Calendario</a></li>
                         <li><a href="">Acerca</a></li>
@@ -249,7 +249,7 @@
                    </section>
             </div>
 
-            <div ng-controller="perfil" ng-if="cambio == 'perfil'">
+            <div class="reg" ng-controller="perfil" ng-if="cambio == 'perfil'">
                 <style>
                     .nav{
                         position: relative;
@@ -332,8 +332,13 @@
                     </div>
                 </div>
             </div>
-            <div ng-controller="productos" ng-if="cambio == 'productos'">
-                productos
+            <div class="prod" ng-controller="productos" ng-if="cambio == 'productos'">
+                <style>
+                    .nav{
+                        position: relative;
+                    }
+                </style>
+                <h1>Productos</h1>
             </div>
             <div ng-controller="clientes" ng-if="cambio == 'clientes'">
                    <div id="banner"><h1>Clientes</h1></div>
@@ -343,7 +348,7 @@
                     }
                 </style>
                 <div class="card">
-                    <lx-tabs>
+                    <lx-tabs indicator="green-500">
                         <lx-tab heading="Clientes">
                             <br>
                                 <div class="data-table-container">
@@ -406,7 +411,7 @@
                     }
                 </style>
                 <div class="card">
-                    <lx-tabs>
+                    <lx-tabs indicator="green-500">
                         <lx-tab heading="Empleados">
                             <div class="p+">
                                 <button class="btn btn--xl btn--red btn--icon" lx-ripple><i class="mdi mdi-delete"></i></button>
@@ -431,7 +436,7 @@
                     }
                 </style>
                 <div class="card">
-                    <lx-tabs>
+                    <lx-tabs indicator="green-500">
                         <lx-tab heading="Productos">
                                 <!---->
                                 <div class="data-table-container">
@@ -617,6 +622,10 @@
                </div>
         </div>
 
-        </div>
+        <footer>
+            <h1>ExpoFruit 2015 - Todos los derechos Reservados</h1>
+        </footer>
+
+
     </body>
 </html>
