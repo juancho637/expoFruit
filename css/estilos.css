@@ -66,9 +66,10 @@ nav
       text-shadow: 0 0 25px #000;
       -webkit-text-fill-color: #9DE600;
       -webkit-text-stroke: 1px white;
-      position: absolute;
-      right: 330px;
-      z-index: 101;
+      margin: 0 auto;
+     /* position: absolute;
+      right: 330px;*/
+      /*z-index: 101;*/
 
     }
 #comoComp, #productos, #contacto
@@ -187,7 +188,7 @@ nav
 }
 .card .ng-binding
 {
-  font-size: 2em;
+  font-size: 1.2em;
 }
 .text-field--is-focused .text-field__label
 {
@@ -214,6 +215,7 @@ nav
 {
   background: white;
   text-align: center;
+  padding: 20px;
 }
 .prod 
 {
@@ -308,9 +310,7 @@ nav
   margin: 280px auto 0 auto;
   width: 1em;
   height: 1em;
-  border-radius: 50%;
-  position: relative;
-  text-indent: -9999em;
+  border-radius: 10%;
   -webkit-animation: load4 1.3s infinite linear;
   animation: load4 1.3s infinite linear;
   -webkit-transform: translateZ(0);
@@ -344,33 +344,7 @@ nav
     box-shadow: 0em -3em 0 0 #ffffff, 2em -2em 0 -1em #ffffff, 3em 0 0 -1em #ffffff, 2em 2em 0 -1em #ffffff, 0 3em 0 -1em #ffffff, -2em 2em 0 0 #ffffff, -3em 0em 0 0 #ffffff, -2em -2em 0 0.2em #ffffff;
   }
 }
-@keyframes load4 {
-  0%,
-  100% {
-    box-shadow: 0 -3em 0 0.2em #ffffff, 2em -2em 0 0em #ffffff, 3em 0 0 -1em #ffffff, 2em 2em 0 -1em #ffffff, 0 3em 0 -1em #ffffff, -2em 2em 0 -1em #ffffff, -3em 0 0 -1em #ffffff, -2em -2em 0 0 #ffffff;
-  }
-  12.5% {
-    box-shadow: 0 -3em 0 0 #ffffff, 2em -2em 0 0.2em #ffffff, 3em 0 0 0 #ffffff, 2em 2em 0 -1em #ffffff, 0 3em 0 -1em #ffffff, -2em 2em 0 -1em #ffffff, -3em 0 0 -1em #ffffff, -2em -2em 0 -1em #ffffff;
-  }
-  25% {
-    box-shadow: 0 -3em 0 -0.5em #ffffff, 2em -2em 0 0 #ffffff, 3em 0 0 0.2em #ffffff, 2em 2em 0 0 #ffffff, 0 3em 0 -1em #ffffff, -2em 2em 0 -1em #ffffff, -3em 0 0 -1em #ffffff, -2em -2em 0 -1em #ffffff;
-  }
-  37.5% {
-    box-shadow: 0 -3em 0 -1em #ffffff, 2em -2em 0 -1em #ffffff, 3em 0em 0 0 #ffffff, 2em 2em 0 0.2em #ffffff, 0 3em 0 0em #ffffff, -2em 2em 0 -1em #ffffff, -3em 0em 0 -1em #ffffff, -2em -2em 0 -1em #ffffff;
-  }
-  50% {
-    box-shadow: 0 -3em 0 -1em #ffffff, 2em -2em 0 -1em #ffffff, 3em 0 0 -1em #ffffff, 2em 2em 0 0em #ffffff, 0 3em 0 0.2em #ffffff, -2em 2em 0 0 #ffffff, -3em 0em 0 -1em #ffffff, -2em -2em 0 -1em #ffffff;
-  }
-  62.5% {
-    box-shadow: 0 -3em 0 -1em #ffffff, 2em -2em 0 -1em #ffffff, 3em 0 0 -1em #ffffff, 2em 2em 0 -1em #ffffff, 0 3em 0 0 #ffffff, -2em 2em 0 0.2em #ffffff, -3em 0 0 0 #ffffff, -2em -2em 0 -1em #ffffff;
-  }
-  75% {
-    box-shadow: 0em -3em 0 -1em #ffffff, 2em -2em 0 -1em #ffffff, 3em 0em 0 -1em #ffffff, 2em 2em 0 -1em #ffffff, 0 3em 0 -1em #ffffff, -2em 2em 0 0 #ffffff, -3em 0em 0 0.2em #ffffff, -2em -2em 0 0 #ffffff;
-  }
-  87.5% {
-    box-shadow: 0em -3em 0 0 #ffffff, 2em -2em 0 -1em #ffffff, 3em 0 0 -1em #ffffff, 2em 2em 0 -1em #ffffff, 0 3em 0 -1em #ffffff, -2em 2em 0 0 #ffffff, -3em 0em 0 0 #ffffff, -2em -2em 0 0.2em #ffffff;
-  }
-}
+
 
 /*==============================================================================*/
 /*ESTILOS MAPA EXPORTACIONES*/
