@@ -38,22 +38,22 @@
                 </nav>
              
                 <div class="Minicio" ng-if="mIni == '0'">
-                    <button ng-click="opendDialog2('regis')" class="btn btn--m btn--blue btn--flat" lx-ripple><i class="mdi mdi-account"></i> {{valor}}</button>
-                    <button class="btn btn--m btn--green btn--flat" ng-click="opendDialog('test')" lx-ripple><i class="mdi mdi-account-plus"></i> Registrate</button><!-- inicializa el evento click para mostrar el formulario de registro -->
+                    <button ng-click="opendDialog2('regis')" class="btn btn--m btn--blue btn--flat btnper" lx-ripple><i class="mdi mdi-account"></i> {{valor}}</button>
+                    <button class="btn btn--m btn--green btn--flat btnper" ng-click="opendDialog('test')" lx-ripple><i class="mdi mdi-account-plus"></i> Registrate</button><!-- inicializa el evento click para mostrar el formulario de registro -->
                 </div>
                 <div class="Minicio" ng-if="mIni == '1'">
                     <button ng-if="rl == '4'" class="btn btn--l btn--blue tc-black btn--icon" lx-ripple="black"><i class="mdi mdi-cart"></i></button>
                     <ul>
                         <li>
                             <a id="btnHerra" class="btn btn--m btn--blue btn--raised" lx-ripple href="#/" ng-click="urlChange('')">{{valor}}</a>
-                            <ul>
-                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4'" lx-ripple href="#/productos" ng-click="urlChange('productos')">Productos</a></li>
-                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4'" lx-ripple href="#/perfil" ng-click="urlChange('perfil')">Editar perfil</a></li>
-                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/proctosAdmin" ng-click="urlChange('proctosAdmin')">Productos</a></li>
-                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '4' && cr == '2'" lx-ripple href="#/correo" ng-click="urlChange('correo')">enviar correo</a></li>
-                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/clientes" ng-click="urlChange('clientes')">Clientes</a></li>
-                                <li><a class="btn btn--s btn--blue btn--raised" ng-if="rl == '1'" lx-ripple href="#/empleados" ng-click="urlChange('empleados')">Empleados</a></li>
-                                <li><a class="btn btn--s btn--red btn--raised" lx-ripple href="#/" ng-click="closeSesion()">cerrar</a></li>
+                            <ul class="lista">
+                                <li><a class="" ng-if="rl == '4'" lx-ripple href="#/productos" ng-click="urlChange('productos')">Productos</a></li>
+                                <li><a class="" ng-if="rl == '4'" lx-ripple href="#/perfil" ng-click="urlChange('perfil')">Editar perfil</a></li>
+                                <li><a class="" ng-if="rl == '1'" lx-ripple href="#/proctosAdmin" ng-click="urlChange('proctosAdmin')">Productos</a></li>
+                                <li><a class="" ng-if="rl == '4' && cr == '2'" lx-ripple href="#/correo" ng-click="urlChange('correo')">enviar correo</a></li>
+                                <li><a class="" ng-if="rl == '1'" lx-ripple href="#/clientes" ng-click="urlChange('clientes')">Clientes</a></li>
+                                <li><a class="" ng-if="rl == '1'" lx-ripple href="#/empleados" ng-click="urlChange('empleados')">Empleados</a></li>
+                                <li><a class="" lx-ripple href="#/" ng-click="closeSesion()">cerrar</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -61,7 +61,7 @@
                 <!-- pop up de registro -->
                 <lx-dialog class="dialog dialog--l" id="test" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
                     <div class="dialog__header">
-                        <div class="toolbar bgc-light-blue-500 pl++">
+                        <div class="toolbar bgc-light-green-500 pl++">
                             <span class="toolbar__label tc-white fs-title">Registrate</span>
                             <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
                         </div>
@@ -153,7 +153,7 @@
                 <!-- pop up de login --> 
                 <lx-dialog class="dialog dialog--l" id="regis" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
                         <div class="dialog__header">
-                            <div class="toolbar bgc-light-blue-500 pl++">
+                            <div class="toolbar bgc-light-green-500 pl++">
                                 <span class="toolbar__label tc-white fs-title">Iniciar Sesión</span>
                                 <a class="btn btn--m btn--black btn--flat cerraD" lx-ripple lx-dialog-close>x</a>
                             </div>
@@ -183,12 +183,70 @@
                 <!-- fin de pop up de login --> 
             </div>
             <div ng-controller="inicio" ng-if="cambio == ''">
-                <style>
-                    .nav{
-                        position: relative;
-                    }
-                </style>
-                <h1>Index</h1>
+                 <section id="principal">
+                         <!--  <h1>Expo Fruit</h1> -->
+                          <div id="content">
+                  <ul class="bxslider">
+                    <li><img src="imagenes/imgPrincipal.jpg" title="Caption 1" /></li>
+                    <li><img src="imagenes/imgPrincipal3.jpg" title="Caption 2" /></li>
+                   <!--  <li><img src="imagenes/curuba.jpg" title="Caption 3" /></li>
+                    <li><img src="imagenes/uchuva.jpg" title="Caption 4" /></li> -->
+                  </ul>
+                </div>
+                       
+               
+                </section>
+
+                   <section id="productos">
+                       <h1>NUESTROS PRODUCTOS MAS POPULARES</h1>
+                   </section>
+
+                      <div class="banini">
+                          <p>Frutas y flores exoticas de las tierras fertiles colombianas para el mundo</p>
+                      </div>
+
+                   <section id="comoComp">
+                      <h1>¿Como Comprar en ExpoFruit?</h1>
+                         <div id="comprarOp1">
+                            <img src="imagenes/comprarOp1.png">
+                            <p>Da click en comprar</p>
+                        </div>
+                         <div id="comprarOp1"><img src="imagenes/comprarOp2.png"></div>
+                         <div id="comprarOp1"><img src="imagenes/comprarOp3.png"></div>
+                         <div id="comprarOp1"><img src="imagenes/comprarOp4.png"></div>
+                         <!-- <div id="comprarOp1"></div> -->
+
+                   </section>
+
+                         <div class="pqnoso">
+                        <h1>¿POR QUE NOSOTROS?</h1>
+                          <p>La dignidad humana, economica y social de los productores y trabajadores es nuestro compromiso y responsabilidad. Por ello, nuestras politicas se rigen por las normas de buenas practicas agricolas, BPA y la importancia del desarrollo sostenible. Dignificamos el trabajo del campo y la labor agroindustrial de colombia</p>
+                        </div>
+
+                   <section id="contacto">
+                          <h1>Contacto</h1>
+                             <div flex-item class="frmcontacto">
+                                <form>
+                                   <lx-text-field label="Nombre y apellidos" fixed-label="true" icon="account">
+                                      <input type="text" ng-model="textFields.fixedFirstName">
+                                   </lx-text-field>
+
+                                   <lx-text-field label="Numero telefonico" fixed-label="true" icon="phone">
+                                      <input type="text" ng-model="textFields.fixedLastName">
+                                   </lx-text-field>
+
+                                   <lx-text-field label="Correo electronico"  fixed-label="true" icon="email">
+                                      <input type="email" ng-model="textFields.fixedEmail">
+                                   </lx-text-field>
+
+                                   <lx-text-field label="Description" fixed-label="true"  icon="comment-processing">
+                                      <textarea ng-model="textFields.description"></textarea>
+                                   </lx-text-field>
+
+                                    <button class="btn btn--m btn--green btn--raised" lx-ripple>Enviar</button>
+                                </form>
+                            </div>
+                   </section>
             </div>
             <div ng-controller="perfil" ng-if="cambio == 'perfil'">
                 <style>
