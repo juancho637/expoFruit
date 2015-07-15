@@ -39,8 +39,8 @@ html{
 }
 .Minicio ul, ol{
     list-style: none;
+    width: 120px;
     z-index: 10;
-    float: right;
 }
 .Minicio ul li ul{
     display: none;

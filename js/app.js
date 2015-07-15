@@ -106,6 +106,12 @@ expoF.controller("empleados", function () {
 expoF.controller("correo", function () {
     serv.loader(0);
 });
+expoF.controller("exportaciones", function () {
+    serv.loader(0);
+});
+expoF.controller("calendario", function () {
+    serv.loader(0);
+});
 
 expoF.controller("perfil", function ($scope, $http, seccion, LxNotificationService, LxDialogService) {
     var request = $http({
