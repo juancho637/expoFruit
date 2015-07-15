@@ -208,7 +208,7 @@
                    <section id="comoComp">
                       <h1>¿Como Comprar en ExpoFruit?</h1>
                          <div id="comprarOp1">
-                            <img src="imagenes/comprarOp1.png">
+                            <img src="imagenes/imgInicio/comprarOp1.png">
                             <p>Da click en comprar</p>
                         </div>
                          <div id="comprarOp1"><img src="imagenes/imgInicio/comprarOp2.png"></div>
@@ -368,7 +368,7 @@
                                                 <td style="width: 250px;">{{cliente.apellido_usuario_comun}}</td>
                                                 <td style="width: 300px;">{{cliente.email_usuario_comun}}</td>
                                                 <td style="width: 150px;">{{cliente.usuario_comun_activo}}</td>
-                                                <td style="width: 100px;">{{cliente.contacto_usuario_comun}}</td>
+                                                <td style="width: 100px;">{{cliente.contacto_usuario_comun}}<input type="checkbox" ng-model="activo" /></td>
                                                 <td style="width: 120px;">
                                                     <button class="btn btn--xs btn--green btn--raised btnPass" ng-click="opendDialog('clientesAdmin',cliente)" lx-ripple>Ver más</button>
                                                 </td>
@@ -413,13 +413,42 @@
                 <div class="card">
                     <lx-tabs indicator="green-500">
                         <lx-tab heading="Empleados">
-                            <div class="p+">
-                                <button class="btn btn--xl btn--red btn--icon" lx-ripple><i class="mdi mdi-delete"></i></button>
-                            </div>
+                            <br>
+                                <div class="data-table-container">
+                                    <table class="data-table">
+                                        <thead style="border-bottom: 3px solid gray;">
+                                            <tr class="data-table__selectable-row">
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>E-mail</th>
+                                                <th>Pais</th>
+                                                <th>Rol</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="Usuarios in datosUsuarios">
+                                                <td style="width: 250px;">{{Usuarios.nombre_usuario}}</td>
+                                                <td style="width: 250px;">{{Usuarios.apellido_usuario}}</td>
+                                                <td style="width: 300px;">{{Usuarios.email_usuarios}}</td>
+                                                <td style="width: 150px;">{{Usuarios.Country}}</td>
+                                                <td style="width: 100px;">{{Usuarios.nombre_role}}</td>
+                                                <td style="width: 120px;">
+                                                    <button class="btn btn--xs btn--green btn--raised btnPass" ng-click="opendDialog('usuariosAdmin',Usuarios)" lx-ripple>Ver más</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                         </lx-tab>
                         <lx-tab heading="Agregar Empleados">
                             <div class="p+">
-                                <p class="p+">Agregar Empleados</p>
+                                <form>
+                                    
+                                    <br>
+                                    <div flex-item class="inpu">
+                                        <button ng-click="cl()" class="btn btn--m btn--green btn--raised">Agregar Empleado</button>
+                                    </div>
+                                </form>
                             </div>
                         </lx-tab>
                     </lx-tabs>

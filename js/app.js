@@ -24,10 +24,7 @@ expoF.service('seccion', function(){
 	});
 	request.success(
             function(response){
-                //alert(response);
-                //serv.ur([response[0][0],response[0][4]]);
                 serv.ur(response);
-                //serv.res = response[0][1];
                 serv.cambio(1);
             }
 	);
@@ -99,8 +96,19 @@ expoF.controller("proctosAdmin", function ($scope, $http) {
     };
 });
 
-expoF.controller("empleados", function () {
-    serv.loader(0);
+expoF.controller("empleados", function ($scope, $http) {
+    serv.loader(1);
+    var request = $http({
+        method: 'POST',
+        url: $scope.url,
+        data: {
+            type: 'empleadosAdminConsul'
+        }
+    });
+    request.success(function(response){
+        $scope.datosUsuarios = response;
+        serv.loader(0);
+    });
 });
 
 expoF.controller("correo", function () {
@@ -122,7 +130,6 @@ expoF.controller("perfil", function ($scope, $http, seccion, LxNotificationServi
         }
     });
     request.success(function (response){
-        //console.log(response);        
         $scope.paiss = response;
         $scope.ciudadd = response;
         $scope.nickName = response[0][0];
@@ -138,7 +145,6 @@ expoF.controller("perfil", function ($scope, $http, seccion, LxNotificationServi
     });
     
     $scope.selecP = function (par){
-        //console.log(par);
         serv.loader(1);
         var request = $http({
             method: 'POST',
@@ -149,7 +155,6 @@ expoF.controller("perfil", function ($scope, $http, seccion, LxNotificationServi
             }
         });
         request.success(function (response){
-            //console.log(response.ciudades);
             $scope.ciudadd = response;
             serv.loader(0);
         });
@@ -211,8 +216,8 @@ expoF.controller("clientes", function ($http, $scope, LxDialogService) {
         }
     });
     request.success(function(response){
-        //console.log(response);
         $scope.datosClientes = response;
+        $scope.activo = true;
         serv.loader(0);
     });
     
@@ -244,12 +249,10 @@ expoF.controller("nav", function ($scope, $http, seccion, LxNotificationService,
     
     $scope.urlChange = function(ur){
         if(ur != url){
-            //console.log("no");
             url = ur;
             serv.cambio(1);
             serv.loader(1);
         }else{
-            //console.log("si");
             serv.loader(0);
         }
     };
@@ -257,10 +260,8 @@ expoF.controller("nav", function ($scope, $http, seccion, LxNotificationService,
     $scope.EnviarRegis = function (){
         var un = undefined;
         if($scope.nickName == un || $scope.contrasena == un || $scope.contrasena2 == un || $scope.nombre == un || $scope.apellido == un || $scope.mail == un || $scope.telefono == un || $scope.cell == un || $("#select1").val() == un || $("#select2").val() == un || $scope.ciudad == un || $scope.direccion == un){
-            //alert('llena todos los campos correspondientes por favor');
         }else{
             if($scope.nickName == '' || $scope.contrasena == '' || $scope.contrasena2 == '' || $scope.nombre == '' || $scope.apellido == '' || $scope.mail == '' || $scope.telefono == '' || $scope.cell == '' || $("#select1").val() == '' || $("#select2").val() == '' || $scope.ciudad == '' || $scope.direccion == ''){
-                //alert('llena todos los campos correspondientes por favor');
             }else{
                 var request = $http({
                     method: 'POST',

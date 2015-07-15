@@ -77,5 +77,11 @@ class info extends DB{
         $row = $this->result($sql);
         return $row;
     }
+    
+    public function empleadosAdminConsul(){
+        $sql = "SELECT tb_usuarios.nombre_usuario, tb_usuarios.apellido_usuario, tb_usuarios.email_usuarios, tb_paises.Country, tb_usuarios.ciudad_usuario, tb_roles.nombre_role FROM tb_usuarios INNER JOIN tb_roles ON tb_usuarios.role_usuarios = tb_roles.id_role INNER JOIN tb_paises ON tb_usuarios.pais_usuario = tb_paises.CountryId";
+        $row = $this->result($sql);
+        return $row;
+    }
 }
 $info = new info;

@@ -60,6 +60,10 @@
         case 'clientesAdminConsul':
             clientesAdminConsul();
         break;
+    
+        case 'empleadosAdminConsul':
+            empleadosAdminConsul();
+        break;
     }
     
     function aLogin(){//se ejecuta cuando alguien le da a el boton inciar sesión
@@ -172,5 +176,10 @@
     
     function clientesAdminConsul(){
         $count = $GLOBALS['info']->clientesAdminConsul();
+        echo json_encode($count);
+    }
+    
+    function empleadosAdminConsul(){
+        $count = $GLOBALS['info']->empleadosAdminConsul();
         echo json_encode($count);
     }
